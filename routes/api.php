@@ -25,3 +25,6 @@ Route::get('/products/{id}', [ProductController::class, 'show'])->name('products
 Route::put('/products/{id}', [ProductController::class, 'update'])->name('products.update');
 Route::delete('/products/{id}', [ProductController::class, 'destroy'])->name('products.destroy');
 
+Route::get('/docs/api-docs.json', function () {
+    return file_get_contents(public_path('docs/api-docs.json'));
+});

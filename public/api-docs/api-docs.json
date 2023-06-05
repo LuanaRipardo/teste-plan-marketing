@@ -1,0 +1,211 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Datasys API",
+        "description": "Documentação da API implementada",
+        "contact": {
+            "email": "luana.ripardo96@outlook.com"
+        },
+        "version": "2.0.1"
+    },
+    "paths": {
+        "/api/products": {
+            "get": {
+                "summary": "Listar todos os produtos",
+                "operationId": "d97d1c3727cbac49708b85f7d11f7d58",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "Filtrar por nome",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "category",
+                        "in": "query",
+                        "description": "Filtrar por categoria",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "has_image",
+                        "in": "query",
+                        "description": "Filtrar por presença de imagem (true/false)",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "true",
+                                "false"
+                            ]
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Retorna a lista de produtos filtrados"
+                    }
+                }
+            },
+            "post": {
+                "summary": "Criar um novo produto",
+                "operationId": "785644b7d7dd38af4b51dafd0fbc1b6d",
+                "responses": {
+                    "201": {
+                        "description": "Retorna o produto criado"
+                    },
+                    "422": {
+                        "description": "Erro de validação"
+                    }
+                }
+            }
+        },
+        "/api/products/{id}": {
+            "get": {
+                "summary": "Obter detalhes de um produto",
+                "operationId": "c87fb2e4d617e7b36c712cad358acdb8",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID do produto",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Retorna os detalhes do produto"
+                    },
+                    "404": {
+                        "description": "Produto não encontrado"
+                    }
+                }
+            },
+            "put": {
+                "summary": "Atualizar um produto",
+                "operationId": "416e4959a3919547eb609d87e3db9135",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID do produto",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Retorna o produto atualizado"
+                    },
+                    "404": {
+                        "description": "Produto não encontrado"
+                    },
+                    "422": {
+                        "description": "Erro de validação"
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Excluir um produto",
+                "operationId": "b49ce9f3cb168b233245548fb4ef36d3",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID do produto",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Produto excluído com sucesso"
+                    },
+                    "404": {
+                        "description": "Produto não encontrado"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "ProductRequestSchema": {
+                "title": "ProductRequest",
+                "description": "Esquema para a criação de produto",
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "example": "Nome do Produto"
+                    },
+                    "price": {
+                        "type": "number",
+                        "example": 10.99
+                    },
+                    "description": {
+                        "type": "string",
+                        "example": "Descrição do Produto"
+                    },
+                    "category": {
+                        "type": "string",
+                        "example": "Categoria do Produto"
+                    },
+                    "image_url": {
+                        "type": "string",
+                        "example": "https://exemplo.com/produto.jpg"
+                    }
+                },
+                "type": "object"
+            },
+            "ProductSchema": {
+                "title": "Product",
+                "description": "Modelo de Produto",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "name": {
+                        "type": "string",
+                        "example": "Nome do Produto"
+                    },
+                    "price": {
+                        "type": "number",
+                        "example": 10.99
+                    },
+                    "description": {
+                        "type": "string",
+                        "example": "Descrição do Produto"
+                    },
+                    "category": {
+                        "type": "string",
+                        "example": "Categoria do Produto"
+                    },
+                    "image_url": {
+                        "type": "string",
+                        "example": "https://exemplo.com/produto.jpg"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "securitySchemes": {
+            "bearer": {
+                "type": "http",
+                "scheme": "bearer"
+            }
+        }
+    }
+}
