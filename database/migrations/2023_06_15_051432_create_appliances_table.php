@@ -4,24 +4,22 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateProductsTable extends Migration
+class CreateAppliancesTable extends Migration
 {
     public function up()
     {
-        Schema::create('products', function (Blueprint $table) {
+        Schema::create('appliances', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->float('price');
-            $table->text('description');
-            $table->string('category');
-            $table->string('image_url')->nullable();
+            $table->text('description')->nullable();
+            $table->integer('voltage')->unsigned();
+            $table->string('brand');
             $table->timestamps();
         });
     }
 
     public function down()
     {
-        Schema::dropIfExists('products');
+        Schema::dropIfExists('appliances');
     }
 }
-

@@ -162,6 +162,8 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         Laravel\Telescope\TelescopeServiceProvider::class,
+        Fruitcake\Cors\CorsServiceProvider::class,
+
 
         /*
          * Package Service Providers...

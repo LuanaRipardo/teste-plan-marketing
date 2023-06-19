@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Api\ProductController;
+use App\Http\Controllers\ApplianceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,11 +19,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/products', [ProductController::class, 'index'])->name('products.index');
-Route::post('/products', [ProductController::class, 'store'])->name('products.store');
-Route::get('/products/{id}', [ProductController::class, 'show'])->name('products.show');
-Route::put('/products/{id}', [ProductController::class, 'update'])->name('products.update');
-Route::delete('/products/{id}', [ProductController::class, 'destroy'])->name('products.destroy');
+Route::get('/appliances', [ApplianceController::class, 'index'])->name('appliances.index');
+Route::post('/appliances', [ApplianceController::class, 'store'])->name('appliances.store');
+Route::get('/appliances/{id}', [ApplianceController::class, 'show'])->name('appliances.show');
+Route::put('/appliances/{id}', [ApplianceController::class, 'update'])->name('appliances.update');
+Route::delete('/appliances/{id}', [ApplianceController::class, 'destroy'])->name('appliances.destroy');
 
 Route::get('/docs/api-docs.json', function () {
     return file_get_contents(public_path('docs/api-docs.json'));
